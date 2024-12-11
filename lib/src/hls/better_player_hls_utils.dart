@@ -12,6 +12,8 @@ import 'package:better_player/src/hls/hls_parser/rendition.dart';
 import 'package:better_player/src/hls/hls_parser/segment.dart';
 import 'package:better_player/src/hls/hls_parser/util.dart';
 
+import '../iso_languages/iso_language.dart';
+
 ///HLS helper class
 class BetterPlayerHlsUtils {
   static Future<BetterPlayerAsmsDataHolder> parse(
@@ -147,7 +149,7 @@ class BetterPlayerHlsUtils {
       }
 
       return BetterPlayerAsmsSubtitle(
-          name: rendition.format.label,
+          name: isoLanguage(shortName: rendition.format.language ?? ''),
           language: rendition.format.language,
           url: rendition.url.toString(),
           realUrls: hlsSubtitlesUrls,
@@ -171,7 +173,7 @@ class BetterPlayerHlsUtils {
         final Rendition audio = parsedPlaylist.audios[index];
         audios.add(BetterPlayerAsmsAudioTrack(
           id: index,
-          label: audio.name,
+          label: isoLanguage(shortName: audio.format.language ?? '') ,
           language: audio.format.language,
           url: audio.url.toString(),
         ));

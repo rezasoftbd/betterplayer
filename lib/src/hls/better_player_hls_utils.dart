@@ -173,7 +173,8 @@ class BetterPlayerHlsUtils {
         final Rendition audio = parsedPlaylist.audios[index];
         audios.add(BetterPlayerAsmsAudioTrack(
           id: index,
-          label: isoLanguage(shortName: audio.format.language ?? '') ,
+          label: audio
+              .name, //  isoLanguage(shortName: audio.format.language ?? '') ,
           language: audio.format.language,
           url: audio.url.toString(),
         ));

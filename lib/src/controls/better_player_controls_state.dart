@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:better_player/better_player.dart';
 import 'package:better_player/src/controls/better_player_clickable_widget.dart';
 import 'package:better_player/src/core/better_player_utils.dart';
+import 'package:better_player/src/iso_languages/iso_language.dart';
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -425,7 +426,7 @@ abstract class BetterPlayerControlsState<T extends StatefulWidget>
                 )),
             const SizedBox(width: 16),
             Text(
-              audioTrack.label!,
+             isoLanguage(shortName:  audioTrack.language!),
               style: _getOverflowMenuElementTextStyle(isSelected),
             ),
           ],
